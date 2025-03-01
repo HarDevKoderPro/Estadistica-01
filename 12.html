@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables Cuantitativas Discretas</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .image {
+      width: 50%;
+      height: 200px;
+      background-color: #4CAF50;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .image::before {
+      content: '\1F4C8';
+      /* Emoji de gráfico */
+      font-size: 100px;
+      color: white;
+    }
+
+    .text {
+      width: 50%;
+      font-size: 18px;
+      text-align: left;
+    }
+
+    .text ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .text li {
+      margin-bottom: 20px;
+      /* Mayor separación entre elementos */
+      padding-left: 30px;
+      /* Espacio para la viñeta */
+      position: relative;
+    }
+
+    .text li::before {
+      content: '\1F4D6';
+      /* Emoji de libro */
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+    }
+
+    .text li strong {
+      font-weight: bold;
+      /* Resalta el texto en negrita */
+    }
+
+    .text p {
+      margin-bottom: 15px;
+      /* Espacio entre el enunciado y el primer ítem */
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        padding: 10px 0;
+        display: block;
+      }
+
+      .slide {
+        width: 90%;
+        margin: auto;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+      }
+
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image,
+      .text {
+        width: 100%;
+      }
+
+      .image {
+        height: 180px;
+      }
+
+      .buttons {
+        margin-top: 10px;
+        padding-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">Variables Cuantitativas Discretas</div>
+    <div class="content">
+      <div class="image"></div>
+      <div class="text">
+        <p>Las variables cuantitativas discretas son aquellas que toman valores enteros y no pueden
+          tomar valores intermedios. <br><br>Ejemplos comunes incluyen:</p>
+        <ul>
+          <li><strong>Número de hijos:</strong> 0, 1, 2, 3, etc.</li>
+          <li><strong>Número de autos en un hogar:</strong> 1, 2, 3, etc.</li>
+          <li><strong>Número de veces que una persona va al cine al mes:</strong> 0, 1, 2, 3, etc.</li>
+          <li><strong>Número de estudiantes en un salón de clases:</strong> 20, 25, 30, etc.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="./11.html">Atrás</a>
+      <a href="./13.html">Siguiente</a>
+    </div>
+  </div>
+</body>
+
+</html>

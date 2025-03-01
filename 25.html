@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tarea: Tabla de Frecuencias</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding-top: 20px;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .content {
+      width: 100%;
+      text-align: left;
+    }
+
+    .exercise {
+      margin-bottom: 20px;
+    }
+
+    .exercise p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      border: 2px solid #28a745;
+      /* Borde verde para resaltar la tabla */
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      /* Centrar el contenido de las celdas */
+    }
+
+    table th {
+      background-color: #28a745;
+      /* Color verde para el encabezado */
+      color: white;
+      font-weight: bold;
+    }
+
+    table td {
+      background-color: #f9f9f9;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      /* Centrar el texto dentro de los inputs */
+      /* Eliminar spinners */
+      -moz-appearance: textfield;
+      /* Firefox */
+      appearance: textfield;
+      /* Estándar */
+    }
+
+    /* Eliminar spinners en Chrome, Safari, Edge, Opera */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"]:focus {
+      border-color: #28a745;
+      outline: none;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .buttons button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .buttons button:hover:not(:disabled) {
+      background: #0056b3;
+    }
+
+    .message {
+      display: none;
+      margin-top: 10px;
+      color: #28a745;
+      /* Color verde para el mensaje */
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 20px;
+      }
+
+      .slide {
+        width: 95%;
+        margin: 0 auto;
+        max-height: 85vh;
+      }
+
+      table th,
+      table td {
+        padding: 8px;
+      }
+
+      input[type="number"] {
+        padding: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">TAREA</div>
+    <div class="content">
+      <div class="exercise">
+        <p>Resultado de una encuesta acerca del número de hijos por familia de un barrio Estrato 3:</p>
+        <p>[1, 2, 3, 1, 2, 4, 5, 2, 2, 1, 1, 0, 0, 3, 2, 1, 5, 2, 1, 3, 4, 2, 1, 0]</p>
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>f</th>
+              <th>F</th>
+              <th>x.f</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Fila 1 -->
+            <tr>
+              <td><input type="number" id="x1"></td>
+              <td><input type="number" id="f1"></td>
+              <td><input type="number" id="F1"></td>
+              <td><input type="number" id="xf1"></td>
+            </tr>
+            <!-- Fila 2 -->
+            <tr>
+              <td><input type="number" id="x2"></td>
+              <td><input type="number" id="f2"></td>
+              <td><input type="number" id="F2"></td>
+              <td><input type="number" id="xf2"></td>
+            </tr>
+            <!-- Fila 3 -->
+            <tr>
+              <td><input type="number" id="x3"></td>
+              <td><input type="number" id="f3"></td>
+              <td><input type="number" id="F3"></td>
+              <td><input type="number" id="xf3"></td>
+            </tr>
+            <!-- Fila 4 -->
+            <tr>
+              <td><input type="number" id="x4"></td>
+              <td><input type="number" id="f4"></td>
+              <td><input type="number" id="F4"></td>
+              <td><input type="number" id="xf4"></td>
+            </tr>
+            <!-- Fila 5 -->
+            <tr>
+              <td><input type="number" id="x5"></td>
+              <td><input type="number" id="f5"></td>
+              <td><input type="number" id="F5"></td>
+              <td><input type="number" id="xf5"></td>
+            </tr>
+            <!-- Fila 6 -->
+            <tr>
+              <td><input type="number" id="x6"></td>
+              <td><input type="number" id="f6"></td>
+              <td><input type="number" id="F6"></td>
+              <td><input type="number" id="xf6"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="buttons">
+      <button onclick="window.location.href='./24.html'">Atrás</button>
+      <button id="finalizarBtn" disabled onclick="finalizarTarea()">Finalizar</button>
+    </div>
+    <div class="message" id="message">¡Respuestas guardadas correctamente!</div>
+  </div>
+
+  <script>
+    // Habilitar el botón "Finalizar" si todos los campos están llenos
+    const inputs = document.querySelectorAll("input[type='number']");
+    const finalizarBtn = document.getElementById("finalizarBtn");
+
+    function validarCampos() {
+      let todosLlenos = true;
+      inputs.forEach(input => {
+        if (input.value.trim() === "") {
+          todosLlenos = false;
+        }
+      });
+      finalizarBtn.disabled = !todosLlenos;
+    }
+
+    inputs.forEach(input => input.addEventListener("input", validarCampos));
+
+    // Función para descargar el archivo Tarea.txt
+    function descargarArchivo(texto, nombreArchivo) {
+      const elemento = document.createElement("a");
+      const archivo = new Blob([texto], { type: "text/plain" });
+      elemento.href = URL.createObjectURL(archivo);
+      elemento.download = nombreArchivo;
+      document.body.appendChild(elemento);
+      elemento.click();
+      document.body.removeChild(elemento);
+    }
+
+    // Finalizar la tarea, descargar el archivo y redirigir a index.html
+    function finalizarTarea() {
+      // Obtener el nombre del estudiante del localStorage
+      const nombreEstudiante = localStorage.getItem("nombreEstudiante") || "Nombre no disponible";
+
+      // Obtener los valores de la tabla
+      const tabla = `
+        x: ${document.getElementById("x1").value}, ${document.getElementById("x2").value}, ${document.getElementById("x3").value}, ${document.getElementById("x4").value}, ${document.getElementById("x5").value}, ${document.getElementById("x6").value}
+        f: ${document.getElementById("f1").value}, ${document.getElementById("f2").value}, ${document.getElementById("f3").value}, ${document.getElementById("f4").value}, ${document.getElementById("f5").value}, ${document.getElementById("f6").value}
+        F: ${document.getElementById("F1").value}, ${document.getElementById("F2").value}, ${document.getElementById("F3").value}, ${document.getElementById("F4").value}, ${document.getElementById("F5").value}, ${document.getElementById("F6").value}
+        x.f: ${document.getElementById("xf1").value}, ${document.getElementById("xf2").value}, ${document.getElementById("xf3").value}, ${document.getElementById("xf4").value}, ${document.getElementById("xf5").value}, ${document.getElementById("xf6").value}
+      `;
+
+      // Guardar en localStorage
+      localStorage.setItem("respuesta5", tabla);
+
+      // Obtener todas las respuestas del localStorage
+      const respuesta1 = localStorage.getItem("respuesta1") || "Respuesta 1 no disponible";
+      const respuesta2 = localStorage.getItem("respuesta2") || "Respuesta 2 no disponible";
+      const respuesta3 = localStorage.getItem("respuesta3") || "Respuesta 3 no disponible";
+      const respuesta4 = localStorage.getItem("respuesta4") || "Respuesta 4 no disponible";
+      const respuesta5 = localStorage.getItem("respuesta5") || "Respuesta 5 no disponible";
+
+      // Crear el contenido del archivo Tarea.txt
+      const contenidoArchivo = `
+        Nombre del estudiante: ${nombreEstudiante}
+
+        Respuestas de la tarea:
+        ${respuesta1}
+
+        ${respuesta2}
+
+        ${respuesta3}
+
+        ${respuesta4}
+
+        ${respuesta5}
+      `;
+
+      // Descargar el archivo Tarea.txt
+      descargarArchivo(contenidoArchivo, "Tarea.txt");
+
+      // Mostrar mensaje de éxito
+      const message = document.getElementById("message");
+      message.style.display = "block";
+      setTimeout(() => {
+        message.style.display = "none";
+        // Borrar el localStorage
+        localStorage.clear();
+        // Redirigir a index.html después de 3 segundos
+        window.location.href = "index.html";
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>

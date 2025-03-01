@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicios de Variables</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      width: 100%;
+      text-align: left;
+    }
+
+    .exercise {
+      margin-bottom: 20px;
+    }
+
+    .exercise p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .answer {
+      display: none;
+      font-size: 16px;
+      color: #008000;
+      /* Verde más intenso */
+      font-weight: bold;
+      /* Texto en negrita */
+      margin-top: 10px;
+    }
+
+    .toggle-btn {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .toggle-btn:hover {
+      background: #0056b3;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        padding: 10px 0;
+        display: block;
+        align-items: flex-start;
+        /* Alinea la diapositiva en la parte superior */
+      }
+
+      .slide {
+        width: 90%;
+        margin: 20px auto 0;
+        /* Margen superior de 20px */
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">Ejercicios de Variables</div>
+    <div class="content">
+      <!-- Ejercicio 4 -->
+      <div class="exercise">
+        <p><strong>4. Clasifica la variable:</strong> "Nivel educativo (Primaria, Secundaria, Universitario)".</p>
+        <button class="toggle-btn" onclick="toggleAnswer(4)">Respuesta</button>
+        <div class="answer" id="answer4">Es una variable <strong>cualitativa ordinal</strong>.</div>
+      </div>
+
+      <!-- Ejercicio 5 -->
+      <div class="exercise">
+        <p><strong>5. Clasifica la variable:</strong> "Peso de una persona en kilogramos".</p>
+        <button class="toggle-btn" onclick="toggleAnswer(5)">Respuesta</button>
+        <div class="answer" id="answer5">Es una variable <strong>cuantitativa continua</strong>.</div>
+      </div>
+
+      <!-- Ejercicio 6 -->
+      <div class="exercise">
+        <p><strong>6. Clasifica la variable:</strong> "Número de goles en un partido de fútbol".</p>
+        <button class="toggle-btn" onclick="toggleAnswer(6)">Respuesta</button>
+        <div class="answer" id="answer6">Es una variable <strong>cuantitativa discreta</strong>.</div>
+      </div>
+    </div>
+    <div class="buttons">
+      <a href="./14.html">Atrás</a>
+      <a href="./16.html">Siguiente</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleAnswer(id) {
+      const answer = document.getElementById(`answer${id}`);
+      const button = document.querySelector(`button[onclick="toggleAnswer(${id})"]`);
+      if (answer.style.display === "none" || answer.style.display === "") {
+        answer.style.display = "block";
+        button.textContent = "Ocultar";
+      } else {
+        answer.style.display = "none";
+        button.textContent = "Respuesta";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tarea: Variable Cualitativa Ordinal</title>
+  <style>
+    /* Estilos iguales a la diapositiva anterior */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding-top: 20px;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .content {
+      width: 100%;
+      text-align: left;
+    }
+
+    .exercise {
+      margin-bottom: 20px;
+    }
+
+    .exercise p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .exercise input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .buttons button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .buttons button:hover:not(:disabled) {
+      background: #0056b3;
+    }
+
+    .message {
+      display: none;
+      margin-top: 10px;
+      color: #008000;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 20px;
+      }
+
+      .slide {
+        width: 95%;
+        margin: 0 auto;
+        max-height: 85vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">TAREA</div>
+    <div class="content">
+      <div class="exercise">
+        <p>Clasifica la siguiente variable: "Nivel de satisfacción (Muy insatisfecho, Insatisfecho, Neutral, Satisfecho,
+          Muy satisfecho)".</p>
+        <p><strong>Variable:</strong></p>
+        <input type="text" id="variable" placeholder="Define la variable">
+        <p><strong>Tipo de variable:</strong></p>
+        <input type="text" id="tipoVariable" placeholder="Especifica el tipo de variable">
+      </div>
+    </div>
+    <div class="buttons">
+      <button onclick="window.location.href='./22.html'">Atrás</button>
+      <button id="siguienteBtn" disabled onclick="guardarRespuestas()">Siguiente</button>
+    </div>
+    <div class="message" id="message">¡Respuestas guardadas correctamente!</div>
+  </div>
+
+  <script>
+    // Habilitar el botón "Siguiente" si todos los campos están llenos
+    const variable = document.getElementById("variable");
+    const tipoVariable = document.getElementById("tipoVariable");
+    const siguienteBtn = document.getElementById("siguienteBtn");
+
+    function validarCampos() {
+      const variableValida = variable.value.trim() !== "";
+      const tipoVariableValido = tipoVariable.value.trim() !== "";
+
+      if (variableValida && tipoVariableValido) {
+        siguienteBtn.disabled = false;
+      } else {
+        siguienteBtn.disabled = true;
+      }
+    }
+
+    variable.addEventListener("input", validarCampos);
+    tipoVariable.addEventListener("input", validarCampos);
+
+    // Guardar respuestas en localStorage
+    function guardarRespuestas() {
+      const respuestas = `
+        Enunciado: Clasifica la siguiente variable: "Nivel de satisfacción (Muy insatisfecho, Insatisfecho, Neutral, Satisfecho, Muy satisfecho)".
+        Variable: ${variable.value.trim()}
+        Tipo: ${tipoVariable.value.trim()}
+      `;
+
+      // Guardar en localStorage
+      localStorage.setItem("respuesta3", respuestas);
+
+      // Mostrar mensaje de éxito
+      const message = document.getElementById("message");
+      message.style.display = "block";
+      setTimeout(() => {
+        message.style.display = "none";
+        window.location.href = "./24.html"; // Redirigir a la siguiente diapositiva
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>

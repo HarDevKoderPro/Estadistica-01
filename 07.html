@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio: Población, Individuo y Variable</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      font-size: 18px;
+      text-align: left;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 80%;
+      text-align: center;
+    }
+
+    .response {
+      display: none;
+      margin-top: 5px;
+      font-size: 16px;
+      color: #333;
+      text-align: left;
+      width: 80%;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        height: auto;
+        min-height: 90vh;
+        padding: 10px 0;
+        display: block;
+      }
+
+      .slide {
+        width: 90%;
+        margin: auto;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+      }
+
+      .btn,
+      .response {
+        width: 100%;
+      }
+
+      .buttons {
+        margin-top: 10px;
+        padding-bottom: 5px;
+      }
+    }
+  </style>
+  <script>
+    function showResponse(id) {
+      var element = document.getElementById(id);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">Ejercicio: Población, Individuo y Variable</div>
+    <div class="text">
+      <p>Se desea saber el peso de un grupo de 5 amigos.</p>
+    </div>
+    <div class="buttons-container">
+      <button class="btn" onclick="showResponse('poblacion')">Población</button>
+      <div id="poblacion" class="response">Los 5 amigos.</div>
+
+      <button class="btn" onclick="showResponse('individuo')">Individuo</button>
+      <div id="individuo" class="response">Un amigo del grupo.</div>
+
+      <button class="btn" onclick="showResponse('muestra')">Muestra</button>
+      <div id="muestra" class="response">No se requiere muestra, ya que la población es pequeña y se estudia en su
+        totalidad.</div>
+
+      <button class="btn" onclick="showResponse('tamano_muestra')">Tamaño de la muestra</button>
+      <div id="tamano_muestra" class="response">Toda la población es estudiada, por lo que el tamaño de la muestra es
+        igual al total de la población: 5 amigos.</div>
+
+      <button class="btn" onclick="showResponse('variable')">Variable principal</button>
+      <div id="variable" class="response">El peso de cada amigo (variable cuantitativa continua).</div>
+    </div>
+    <div class="buttons">
+      <a href="./06.html">Atrás</a>
+      <a href="./08.html">Siguiente</a>
+    </div>
+  </div>
+</body>
+
+</html>

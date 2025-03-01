@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tarea: Población, Individuo, Muestra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      background-color: #f0f0f0;
+      padding-top: 20px;
+    }
+
+    .slide {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .content {
+      width: 100%;
+      text-align: left;
+    }
+
+    .exercise {
+      margin-bottom: 20px;
+    }
+
+    .exercise p {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .exercise input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .exercise label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .exercise input[type="checkbox"] {
+      margin-left: 10px;
+    }
+
+    .buttons {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .buttons button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .buttons button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .buttons button:hover:not(:disabled) {
+      background: #0056b3;
+    }
+
+    .message {
+      display: none;
+      margin-top: 10px;
+      color: #008000;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 20px;
+      }
+
+      .slide {
+        width: 95%;
+        margin: 0 auto;
+        max-height: 85vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slide">
+    <div class="title">TAREA</div>
+    <div class="content">
+      <div class="exercise">
+        <p>Estudio sobre el desempeño de los 10 profesores de un colegio.</p>
+        <p><strong>Población:</strong></p>
+        <input type="text" id="poblacion" placeholder="Define la población">
+        <p><strong>Individuo:</strong></p>
+        <input type="text" id="individuo" placeholder="Define el individuo">
+        <p><strong>¿Requiere muestra?</strong></p>
+        <label>Sí<input type="checkbox" id="muestraSi"></label>
+        <label>No<input type="checkbox" id="muestraNo"></label>
+        <p id="tamanoMuestraP" style="display: none;"><strong>Tamaño de la muestra:</strong></p>
+        <input type="text" id="tamanoMuestra" placeholder="Tamaño de la muestra" style="display: none;">
+      </div>
+    </div>
+    <div class="buttons">
+      <button onclick="window.location.href='./21.html'">Atrás</button>
+      <button id="siguienteBtn" disabled onclick="guardarRespuestas()">Siguiente</button>
+    </div>
+    <div class="message" id="message">¡Respuestas guardadas correctamente!</div>
+  </div>
+
+  <script>
+    // Habilitar el botón "Siguiente" si todos los campos están llenos
+    const poblacion = document.getElementById("poblacion");
+    const individuo = document.getElementById("individuo");
+    const muestraSi = document.getElementById("muestraSi");
+    const muestraNo = document.getElementById("muestraNo");
+    const tamanoMuestra = document.getElementById("tamanoMuestra");
+    const tamanoMuestraP = document.getElementById("tamanoMuestraP");
+    const siguienteBtn = document.getElementById("siguienteBtn");
+
+    function validarCampos() {
+      const poblacionValida = poblacion.value.trim() !== "";
+      const individuoValido = individuo.value.trim() !== "";
+      const muestraValida = muestraSi.checked || muestraNo.checked;
+      const tamanoMuestraValido = muestraSi.checked ? tamanoMuestra.value.trim() !== "" : true;
+
+      if (poblacionValida && individuoValido && muestraValida && tamanoMuestraValido) {
+        siguienteBtn.disabled = false;
+      } else {
+        siguienteBtn.disabled = true;
+      }
+    }
+
+    poblacion.addEventListener("input", validarCampos);
+    individuo.addEventListener("input", validarCampos);
+    muestraSi.addEventListener("change", () => {
+      tamanoMuestraP.style.display = "block";
+      tamanoMuestra.style.display = "block";
+      validarCampos();
+    });
+    muestraNo.addEventListener("change", () => {
+      tamanoMuestraP.style.display = "none";
+      tamanoMuestra.style.display = "none";
+      validarCampos();
+    });
+    tamanoMuestra.addEventListener("input", validarCampos);
+
+    // Guardar respuestas en localStorage
+    function guardarRespuestas() {
+      const respuestas = `
+        Enunciado: Estudio sobre el desempeño de los 10 profesores de un colegio.
+        Población: ${poblacion.value.trim()}
+        Individuo: ${individuo.value.trim()}
+        Requiere Muestra: ${muestraSi.checked ? "Sí" : "No"}
+        Tamaño Muestra: ${muestraSi.checked ? tamanoMuestra.value.trim() : "No aplica"}
+      `;
+
+      // Guardar en localStorage
+      localStorage.setItem("respuesta2", respuestas);
+
+      // Mostrar mensaje de éxito
+      const message = document.getElementById("message");
+      message.style.display = "block";
+      setTimeout(() => {
+        message.style.display = "none";
+        window.location.href = "./23.html"; // Redirigir a la siguiente diapositiva
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>
